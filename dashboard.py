@@ -24,14 +24,15 @@ base = pd.read_csv(DATA_CSV)
 
 with st.sidebar:
     st.title(':airplane: Dashboard Anac')
-    anos = base["ANO"].value_counts().index
+    anos = base["ANO"].value_counts().index.sort_values(ascending=True)
     ano = st.sidebar.selectbox("Anos", anos)
-    # meses = base["MES"].value_counts().index
-    # mes = st.sidebar.selectbox("Meses", meses)
+    # empresas_selecionadas = base.loc[(base['EMPRESA_SIGLA'] != 'ABJ') & (base['EMPRESA_SIGLA'] != 'OMI')]
     empresas =  base["EMPRESA_SIGLA"].value_counts().index
     empresa = st.sidebar.selectbox("Empresas", empresas)
 
 base_filtrada = base.loc[(base['ANO'] == ano) & (base['EMPRESA_SIGLA'] == empresa)]
+
+st.title(base_filtrada['EMPRESA_NOME'].values[0])
 
 # Funções de formatação
 def formatar(valor):
@@ -120,6 +121,7 @@ def make_choropleth(data):
         margin=dict(l=0, r=0, t=0, b=0),
         height=350
     )
+    choropleth.update_coloraxes(colorscale="plasma") 
     choropleth.update_geos(fitbounds = 'locations', visible = False)
     return choropleth
 
@@ -156,10 +158,18 @@ with col[0]:
     grupo_voos = base_filtrada['GRUPO_DE_VOO'].value_counts().to_frame()
     grupo_voos.columns = ['QUANTIDADE']
     grupo_voos.QUANTIDADE = grupo_voos.QUANTIDADE.apply(human_format)
-    st.metric(label='Voos Regulares', value=grupo_voos.iat[0,0])
-    st.metric(label='Voos Não Regulares', value=grupo_voos.iat[1,0])
-    st.metric(label='Voos Improdutivos', value=grupo_voos.iat[2,0])
-    print(grupo_voos)
+    try:
+        st.metric(label='Voos Regulares', value=grupo_voos.iat[0,0])
+    except:
+        print("Without data")
+    try:
+        st.metric(label='Voos Não Regulares', value=grupo_voos.iat[1,0])
+    except:
+        print("Without data")
+    try:
+        st.metric(label='Voos Improdutivos', value=grupo_voos.iat[2,0])
+    except:
+        print("Without data")
 
 with col[1]:
     # Mapa
@@ -191,8 +201,6 @@ with col[1]:
     st.markdown('#### Total decolagens por mês')
     st.line_chart(data=decolagens, x='MES', y='DECOLAGENS', width=250, height=250, color=('#ffaa00'))
 
-
-
 with col[2]:
     consumo_combustivel = base_filtrada[['MES', 'COMBUSTIVEL_LITROS']].groupby(['MES'], as_index=False).sum() 
     consumo_combustivel['MES'] = pd.Categorical(consumo_combustivel['MES'], categories=MONTHS_ORDER, ordered=True)
@@ -218,5 +226,10 @@ with col[2]:
             - Dados: [ANAC](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/voos-e-operacoes-aereas/dados-estatisticos-do-transporte-aereo).
             - :orange[**Revenue Passenger Kilometers (RPK)**]: Quantidade total de receita gerada por uma companhia aérea a partir do transporte de passageiros por quilômetro voado.
             - :orange[**Available Seat Kilometers (ASK)**]: Capacidade da companhia aérea de oferecer assentos disponíveis por quilômetro voado.
-            - :orange[**Air Passanger Load Factor (Load Factor)**]: Divisão entre RPK e ASK  
+            - :orange[**Air Passanger Load Factor (Load Factor)**]: Divisão entre RPK e ASK.
+            - :orange[**Passageiros Pagos**]: Passageiros que ocupam assentos comercializados ao público e que geram receita.
+            - :orange[**Passageiros Grátis**]: Passageiros que ocupam assentos comercializados ao público mas que não geram receita.
+            - :orange[**Voos Regulares**]: Etapas remuneradas que são realizadas sob uma numeração de Horário de Transporte (HOTRAN).
+            - :orange[**Voos Não Regulares**]: Etapas remuneradas que não são realizadas sob uma numeração de Horário de Transporte (HOTRAN).
+            - :orange[**Voos Improdutivos**]: Etapas que não geraram receita à empresa aérea (como realização de treinamentos, voo para manutenção de aeronaves).
             ''')
