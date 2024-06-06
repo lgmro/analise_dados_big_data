@@ -11,8 +11,17 @@
 ## Objetivo:
 - O objetivo principal desta atividade será realizar uma análise de dados para [ANAC (Agência Nacional de Aviação Civil)](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/voos-e-operacoes-aereas/dados-estatisticos-do-transporte-aereo) e criação de um DashBoard.
 
-## Requisitos
-1. Ter o [Python](https://www.python.org/) instalado;
-2. Ter a biblioteca [Pandas](https://pandas.pydata.org/) instalada;
-3. Ter a biblioteca [Seaborn](https://seaborn.pydata.org/) instalada;
-4. Ter o [Jupyter Noteboo](https://jupyter.org/) ou outro software que aceite o formato '.ipynb'.
+## Bibliotecas usadas:
+1. [Python](https://www.python.org/);
+2. [Pandas](https://pandas.pydata.org/);
+3. [Seaborn](https://seaborn.pydata.org/) instalada;
+4. [Jupyter Notebook](https://jupyter.org/);
+5. [Streamlit] (https://streamlit.io/);
+6. [Vega-Altair] (https://altair-viz.github.io/);
+7. [Plotly-Express] (https://plotly.com/python/plotly-express/);
+8. [GeoJson-Brasil] ().
+
+## [GeoJson-Brasil](https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson)
+- Usamos para pegar o GeoJson (dados geoespaciais) do Brasil.
+
+## [Dashboard] ()
