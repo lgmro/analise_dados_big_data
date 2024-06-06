@@ -14,14 +14,13 @@
 ## Bibliotecas usadas:
 1. [Python](https://www.python.org/);
 2. [Pandas](https://pandas.pydata.org/);
-3. [Seaborn](https://seaborn.pydata.org/) instalada;
+3. [Seaborn](https://seaborn.pydata.org/);
 4. [Jupyter Notebook](https://jupyter.org/);
-5. [Streamlit] (https://streamlit.io/);
-6. [Vega-Altair] (https://altair-viz.github.io/);
-7. [Plotly-Express] (https://plotly.com/python/plotly-express/);
-8. [GeoJson-Brasil] ().
+5. [Streamlit](https://streamlit.io/);
+6. [Vega-Altair](https://altair-viz.github.io/);
+7. [Plotly-Express](https://plotly.com/python/plotly-express/).
 
-## [GeoJson-Brasil](https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson)
-- Usamos para pegar o GeoJson (dados geoespaciais) do Brasil.
+## GeoJson-Brasil
+- Usamos para pegar o GeoJson (dados geoespaciais) do Brasil. [Link](https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson).
 
-## [Dashboard] ()
+## Dashboard
