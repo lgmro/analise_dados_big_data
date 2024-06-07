@@ -2,7 +2,7 @@
 
 ## Integrantes:
 1. [Isaac Lessa](https://github.com/Isoco1)
-2. [Karina]() 
+2. [Karina Pereira](https://www.linkedin.com/in/karina-pereira-da-silva-353922237/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 3. [Luis Carlos](https://github.com/Luis1988xp)
 4. [Lucas Gabriel](https://github.com/lgmro)
 5. [Lucas Wenck](https://github.com/Lucas-Wenck)
